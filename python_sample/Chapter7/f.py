@@ -1,1 +1,2 @@
-'This is the entire file.\n'
+'0123456789abcdefire file.'
+'Second line of the file'
