@@ -1,0 +1,98 @@
+<!-- 追加箇所開始 -->
+<script type="text/javascript">
+    function initMap() {
+
+        var test = {lat: <%= @latitude %>, lng: <%= @longitude %>};
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 15,
+            center: test
+        });
+        var transitLayer = new google.maps.TransitLayer();
+        transitLayer.setMap(map);
+
+        var contentString = '住所：<%= @address %>';
+        var infowindow = new google.maps.InfoWindow({
+            content: contentString
+        });
+
+        var marker = new google.maps.Marker({
+            position:test,
+            map: map,
+            title: contentString
+        });
+
+        marker.addListener('click', function() {
+            infowindow.open(map, marker);
+        });
+    }
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCi_PcemdLaMhhvj1x6OuHg_Xhh1DCH1cc&callback=initMap">
+</script>
+<!-- 追加箇所終了 -->
+
+
+div id='map' style='height: 300px; width: 90%;'
+
+= javascript_include_tag src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCi_PcemdLaMhhvj1x6OuHg_Xhh1DCH1cc&callback=initMap", async: true, defer: true
+
+javascript:
+  function initMap() {
+    var test ={ lat: #{@user.latitude}, lng: #{@user.longitude} };
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 15,
+      center: test
+    });
+    var transitLayer = new google.maps.TransitLayer();
+    transitLayer.setMap(map);
+
+    var contentString = "住所：#{@user.address} ";
+    var infowindow = new google.maps.InfoWindow({
+      content: contentString
+    });
+
+    var marker = new google.maps.Marker({
+      position:test,
+      map: map,
+      title: contentString
+    });
+
+    marker.addListener('click', function() {
+      infowindow.open(map, marker);
+    });
+  }
+
+
+
+<p id="notice"><%= notice %></p>
+
+
+
+<p>
+  <strong>タイトル:</strong>
+  <%= @user.title %>
+</p>
+
+<p>
+  <strong>内容:</strong>
+  <%= @user.contents %>
+</p>
+
+<p>
+  <strong>画像:</strong>
+  <%= image_tag @user.image.to_s %>
+</p>
+
+<p>
+  <strong>住所:</strong>
+  <%= @user.address %>
+</p>
+
+#  中略
+<p>
+
+  </p>
+
+<%= link_to '編集', edit_user_path(@user) %> |
+<%= link_to '戻る', users_path %>
+

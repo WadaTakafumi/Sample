@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<h1>投稿一覧</h1>
+
+
+
+<table>
+  <thead>
+    <tr>
+      <th>タイトル</th>
+      <th>内容</th>
+      <th>投稿日時</th>
+      <th>画像</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.title %></td>
+        <td><%= simple_format(user.contents) %></td>
+        <td><%= user.created_at %></td>
+        <td><%= user.address %></td>
+        <td><%= image_tag user.image.to_s %></td>
+        <td><%= link_to '詳細', user %></td>
+        <td><%= link_to '編集', edit_user_path(user) %></td>
+        <td><%= link_to '削除', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to '新規投稿', new_user_path %>
