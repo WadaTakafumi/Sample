@@ -13,7 +13,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    @map = Map.find_by(id: params[:id])
+    @map = User.find_by(id: params[:id])
     @latitude = @map.latitude
 
     @longitude = @map.longitude
