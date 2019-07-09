@@ -12,4 +12,4 @@ class yugo(car):
 t1=car()
 t2=yugo()
 t2.need_a_push()
-t1.need_a_push()
+#t1.need_a_push()
