@@ -62,4 +62,4 @@ gem "gmaps4rails"
 gem 'pry-rails'
 gem 'pry-byebug'
 
-gem 'device'
+gem 'devise'
