@@ -61,3 +61,5 @@ gem "gmaps4rails"
 #add
 gem 'pry-rails'
 gem 'pry-byebug'
+
+gem 'device'
