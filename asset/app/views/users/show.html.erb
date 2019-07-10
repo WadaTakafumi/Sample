@@ -3,7 +3,7 @@
 <script type="text/javascript">
     function initMap() {
 
-        var test = {lat: <%= @latitude %>, lng: <%= @longitude %>};
+        var test = {lat: <%= 35.648428 %>, lng: <%= 139.702986 %>};
         var map = new google.maps.Map(document.getElementById('map'), {
             zoom: 15,
             center: test
@@ -63,7 +63,7 @@
     text-align:left;
     width: 80%;}
 </style>
-<!-- <div id="map"></div> -->
+<div id="map"></div>
 <!-- 追加箇所終了 -->
 
 <%= link_to '編集', edit_user_path(@user) %> |

@@ -55,3 +55,9 @@ gem 'fog-aws'
 gem 'dotenv-rails'
 
 gem 'geocoder'
+
+gem "gmaps4rails"
+
+#add
+gem 'pry-rails'
+gem 'pry-byebug'

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  
+
   
 
   # GET /users
@@ -14,9 +14,9 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @map = User.find_by(id: params[:id])
-    @latitude = @map.latitude
+    @latitude = @map.latitude.to_f
 
-    @longitude = @map.longitude
+    @longitude = @map.longitude.to_f
 
     @address = @map.address
   end
