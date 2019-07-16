@@ -1,0 +1,51 @@
+<!doctype html>
+
+<html lang="ja">
+	<head>
+	  <meta charset="utf-8">
+	
+	  <title>Todo List</title>
+	  <meta name="description" content="Todo list example">
+	  <meta name="author" content="me">
+	
+	</head>
+	
+	<body>
+	<script
+				  src="https://code.jquery.com/jquery-3.4.1.min.js"
+				  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+				  crossorigin="anonymous"></script>
+	
+	
+	<script>
+		$(function() {
+			//console.log("this is some debug information");
+			//$('#numberOfTodos').text(3);
+			
+			//let todos = ["起きる", "朝ごはんを食べる", "学校に行く"];
+			
+			//$.each(todos, function(index, value) {
+			//	$("#todoList").append($('<li/>', {text: value})); // <li>{value}<li>
+			//});
+			
+			
+			$.get( "http://localhost:5000/getNumberOfTodos", function( numberOfTodos ) {
+				  console.log("received '" + numberOfTodos + "' from server" );
+					$('#numberOfTodos').text(numberOfTodos);
+				});
+			
+		})
+	</script>
+	
+	<!-- main content -->
+	<h1>Todo</h1>
+	
+	<p>Number of todos: <span id="numberOfTodos"></span></p>
+	
+	<ol id="todoList">
+	</ol>
+	
+	</body>
+</html>
+
+
