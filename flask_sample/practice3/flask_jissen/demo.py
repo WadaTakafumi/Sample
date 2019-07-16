@@ -32,6 +32,11 @@ def getNumTodos():
     numTodos = 3
     return jsonify(numTodos)
 
+@app.route('/todolist')
+def todolist():
+    todos=["起きる", "朝ごはんを食べる", "学校に行く"]
+    return jsonify(todos)
+
 '''
 @app.route('/upload', methods=['POST'])
 def upload():

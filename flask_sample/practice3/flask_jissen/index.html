@@ -32,8 +32,16 @@
 			$.get( "http://localhost:5000/getNumberOfTodos", function( numberOfTodos ) {
 				  console.log("received '" + numberOfTodos + "' from server" );
 					$('#numberOfTodos').text(numberOfTodos);
+					//$('#todolist').append($('<li/>', {text: value}));
 				});
-			
+
+			$.get( "http://localhost:5000/todolist", function( todos ) {
+				//console.log("received '" + todoList + "' from server" );
+				
+				$.each(todos, function(index,todo) {
+					$("#todoList").append($('<li/>', {text: todo})); // <li>{value}<li>
+				});
+			});
 		})
 	</script>
 	
