@@ -10,9 +10,17 @@ flask server: REST API wrapper for AutoML Anomaly Detection library;
 """
 from flask import Flask, request, jsonify, abort
 from flask_cors import CORS
+import json
 
 app = Flask(__name__)
 CORS(app, supports_credentials=True)
+
+class Todo:
+    def __init__(self,content,done):
+        self.content=content
+        self.done=done
+
+
 
 
 
@@ -20,12 +28,14 @@ CORS(app, supports_credentials=True)
 def index():
     return jsonify('server is running...')
 
+'''
 @app.route('/empl')
 def employee():
     empl = {}
     empl["name"]={"firstName": "Bob", "lastName": "Smith"}
     empl["age"]=29
     return jsonify(empl)
+'''
 
 @app.route('/getNumberOfTodos')
 def getNumTodos():
@@ -34,8 +44,25 @@ def getNumTodos():
 
 @app.route('/todolist')
 def todolist():
-    todos=["起きる", "朝ごはんを食べる", "学校に行く"]
+    todo1=Todo("起きる",True)
+    todo2=Todo("朝ごはんを食べる",False)
+    todo3=Todo("学校に行く",False)
+    todos=[todo1,todo2,todo3]
+    todos=[todo.__dict__ for todo in todos]
+    
+    #todos=["起きる", "朝ごはんを食べる", "学校に行く"]
     return jsonify(todos)
+    
+@app.route('/todo')
+def todo():
+    todo1=Todo("起きる",True)
+
+    #todo2=Todo("朝ごはんを食べる",False)
+    #todo3=Todo("学校に行く",False)
+    #todos=[todo1,todo2,todo3]
+    #todos=["起きる", "朝ごはんを食べる", "学校に行く"]
+    return jsonify(todo1.__dict__)
+    
 
 '''
 @app.route('/upload', methods=['POST'])

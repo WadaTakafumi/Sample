@@ -7,8 +7,13 @@
 	  <title>Todo List</title>
 	  <meta name="description" content="Todo list example">
 	  <meta name="author" content="me">
-	
+		<style>
+			#todoList  {color:red}
+			#todoList .done {color:green}
+			
+		</style>
 	</head>
+	
 	
 	<body>
 	<script
@@ -39,7 +44,7 @@
 				//console.log("received '" + todoList + "' from server" );
 				
 				$.each(todos, function(index,todo) {
-					$("#todoList").append($('<li/>', {text: todo})); // <li>{value}<li>
+					$("#todoList").append($('<li/>', {text: todo.content ,class:todo.done?"done":""})); // <li>{value}<li>
 				});
 			});
 		})
