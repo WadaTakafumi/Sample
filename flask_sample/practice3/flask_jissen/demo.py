@@ -26,7 +26,7 @@ class Todo:
 
 @app.route("/")
 def main_page():
-    return render_template("html/index.html")
+    return render_template("index.html")
 
 '''
 @app.route('/empl')
