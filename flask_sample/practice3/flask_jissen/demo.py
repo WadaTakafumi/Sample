@@ -8,7 +8,7 @@
 flask server: REST API wrapper for AutoML Anomaly Detection library; 
               back end for the anomaly detection playground GUI 
 """
-from flask import Flask, request, jsonify, abort
+from flask import Flask, request, jsonify, abort,render_template
 from flask_cors import CORS
 import json
 
@@ -25,8 +25,8 @@ class Todo:
 
 
 @app.route("/")
-def index():
-    return jsonify('server is running...')
+def main_page():
+    return render_template("index.html")
 
 '''
 @app.route('/empl')
