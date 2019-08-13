@@ -9,9 +9,9 @@ class ToDoItem(BaseModel):
     name: str = "Unknown"
     done: bool = False
 
-@app.get("/")
+@app.get("/items/")
 def read_root():
-    return {"Hello": "World"}
+    return todos
 
 @app.get("/items/{item_id}")
 def read_item(item_id: int):
@@ -26,9 +26,11 @@ async def create_item(item: ToDoItem):
 
 @app.put("/items/{item_id}")
 async def update_item(item_id: int, item: ToDoItem):
-    return {"item_id": item_id, **item.dict()}
+    todos[item_id]=item
+    return todos[item_id]
 
 @app.delete("/items/{item_id}")
-async def delete_item(item_id: int, item: ToDoItem):
-    return {"item_id": item_id, "item": item}
+async def delete_item(item_id: int):
+    item_del=todos.pop(item_id)
+    return item_del
 
