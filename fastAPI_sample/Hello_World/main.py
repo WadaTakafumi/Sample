@@ -1,3 +1,5 @@
+#参考:https://youj.work/post/python0331/
+
 from fastapi import FastAPI
 from pydantic import BaseModel
 
@@ -15,7 +17,6 @@ def read_root():
 
 @app.get("/items/{item_id}")
 def read_item(item_id: int):
-    #return {"item_id": item_id, "q": q}
     return todos[item_id]
 
 @app.post("/items/")
